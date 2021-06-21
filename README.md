@@ -23,7 +23,15 @@ from textgenie import TextGenie
 
 textgenie = TextGenie("ramsrigouthamg/t5_paraphraser",'bert-base-uncased')
 
+# Augment a list of sentences
+sentences = ["The video was posted on Facebook by Alex.","I plan to run it again this time"]
+textgenie.magic_lamp(sentences,"paraphrase: ",n_mask_predictions=5,convert_to_active=True)
+
+# Augment data in a txt file
 textgenie.magic_lamp("sentences.txt","paraphrase: ",n_mask_predictions=5,convert_to_active=True)
+
+# Augment data in a csv file with labels
+textgenie.magic_lamp("sentences.csv","paraphrase: ",n_mask_predictions=5,convert_to_active=True)
 ```
 ## Usage
 <!--ts-->
