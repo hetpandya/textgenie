@@ -59,3 +59,4 @@ textgenie.magic_lamp("sentences.txt","paraphrase: ",n_mask_predictions=5,convert
 
 ## License
 Please check `LICENSE` for more details.
+
