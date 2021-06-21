@@ -158,8 +158,6 @@ class TextGenie:
             sentences = os.path.join(os.getcwd(), sentences)
             if sentences.endswith(".txt"):
                 all_sentences = open(sentences).read().strip().split("\n")
-            elif isinstance(sentences, list):
-                all_sentences = sentences
             elif sentences.endswith(".csv") or sentences.endswith(".tsv"):
                 if not column_names:
                     raise Exception(
@@ -202,6 +200,8 @@ class TextGenie:
                 raise Exception(
                     "Unsupported file format. Currently, following formats are supported: list/csv/tsv"
                 )
+        elif isinstance(sentences, list):
+            all_sentences = sentences
 
         if all_sentences is None:
             raise Exception("Error: No sentences found.")
