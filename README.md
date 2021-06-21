@@ -1,3 +1,3 @@
 <p align="center">
-  <img src="logo.png" alt="logo" width="70%" />
+  <img src="https://github.com/hetpandya/textgenie/raw/main/logo.png" alt="logo" width="70%" />
 </p>
