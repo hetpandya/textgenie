@@ -33,7 +33,7 @@ textgenie.magic_lamp("sentences.txt","paraphrase: ",n_mask_predictions=5,convert
 # Augment data in a csv file with labels
 textgenie.magic_lamp("sentences.csv","paraphrase: ",n_mask_predictions=5,convert_to_active=True)
 ```
-More examples can be found in the examples [notebook](https://github.com/hetpandya/textgenie/blob/main/examples/examples.ipynb).
+Examples can be found in the examples [notebook](https://github.com/hetpandya/textgenie/blob/main/examples/examples.ipynb).
 
 ## Usage
 <!--ts-->
