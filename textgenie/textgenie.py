@@ -148,6 +148,7 @@ class TextGenie:
         n_mask_predictions=None,
         convert_to_active=True,
         label_column=None,
+        data_column=None,
         column_names=None,
     ):
         all_sentences = None
@@ -163,9 +164,15 @@ class TextGenie:
                     raise Exception(
                         "Please provide the column name that contains labels using the 'label_column' parameter."
                     )
+                if not data_column:
+                    raise Exception(
+                        "Please provide the column name that contains data using the 'data_column' parameter."
+                    )
                 if column_names and not isinstance(column_names, list):
                     raise Exception("Please provide column names in a python list.")
-                out_file = sentences.replace(".csv", "").replace(".tsv", "") + "_aug.tsv"
+                out_file = (
+                    sentences.replace(".csv", "").replace(".tsv", "") + "_aug.tsv"
+                )
                 with_labels = True
                 if sentences.endswith(".csv"):
                     if column_names:
@@ -181,7 +188,11 @@ class TextGenie:
                         all_sentences = pd.read_csv(sentences)
                 if label_column not in all_sentences.columns:
                     raise Exception(
-                        "Please provide column names for the dataset using the 'column_names' parameter. If already provided, please check for typos in the name of the label column."
+                        "Please provide label column name for the dataset using the 'label_column' parameter. If already provided, please check for typos in the name of the label column."
+                    )
+                if data_column not in all_sentences.columns:
+                    raise Exception(
+                        "Please provide data column name for the dataset using the 'data_column' parameter. If already provided, please check for typos in the name of the data column."
                     )
                 labels = all_sentences[label_column].unique()
 
@@ -190,8 +201,8 @@ class TextGenie:
                 augmented_data = []
 
                 for ix in tqdm(range(all_sentences.shape[0])):
-                    sent = all_sentences.iloc[ix][0].strip()
-                    label = all_sentences.iloc[ix][1].strip()
+                    sent = all_sentences[data_column][ix].strip()
+                    label = all_sentences[label_column][ix].strip()
                     aug_sent = self.magic_once(
                         sent,
                         paraphrase_prefix,
