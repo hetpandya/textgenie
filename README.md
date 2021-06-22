@@ -14,7 +14,7 @@ It uses various Natural Language Processing methods such as paraphrase generatio
 
 ## Installation
 ```
-$ pip install textgenie
+pip install textgenie
 ```
 
 ## Example
