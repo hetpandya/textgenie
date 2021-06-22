@@ -102,7 +102,6 @@ class TextGenie:
                 and generated_sent not in final_outputs
             ):
                 final_outputs.append(generated_sent)
-
         return final_outputs
 
     def convert_to_active(self, sent):
@@ -148,6 +147,7 @@ class TextGenie:
         paraphrase_max_length=256,
         n_mask_predictions=None,
         convert_to_active=True,
+        label_column=None,
         column_names=None,
     ):
         all_sentences = None
@@ -159,27 +159,39 @@ class TextGenie:
             if sentences.endswith(".txt"):
                 all_sentences = open(sentences).read().strip().split("\n")
             elif sentences.endswith(".csv") or sentences.endswith(".tsv"):
-                if not column_names:
+                if not label_column:
                     raise Exception(
-                        "Please provide existing or new column names to the file using 'column_names' parameter."
+                        "Please provide the column name that contains labels using the 'label_column' parameter."
                     )
+                if column_names and not isinstance(column_names, list):
+                    raise Exception("Please provide column names in a python list.")
                 out_file = sentences.replace(".csv", "_aug.csv")
                 with_labels = True
                 if sentences.endswith(".csv"):
-                    all_sentences = pd.read_csv(sentences)
-                elif sentences.endswith(".csv"):
-                    all_sentences = pd.read_csv(sentences, sep="\t")
-                if isinstance(column_names, str):
-                    labels = all_sentences[column_names].unique()
-                elif isinstance(column_names, list):
-                    all_sentences.columns = column_names
-                    labels = column_names
+                    if column_names:
+                        all_sentences = pd.read_csv(sentences, names=column_names)
+                    else:
+                        all_sentences = pd.read_csv(sentences)
+                elif sentences.endswith(".tsv"):
+                    if column_names:
+                        all_sentences = pd.read_csv(
+                            sentences, names=column_names, sep="\t"
+                        )
+                    else:
+                        all_sentences = pd.read_csv(sentences)
+                if label_column not in all_sentences.columns:
+                    raise Exception(
+                        "Please provide column names for the dataset using the 'column_names' parameter. If already provided, please check for typos in the name of the label column."
+                    )
+                labels = all_sentences[label_column].unique()
 
+                if all_sentences.iloc[0].tolist() == column_names:
+                    all_sentences = all_sentences.drop(0)
                 augmented_data = []
 
                 for ix in tqdm(range(all_sentences.shape[0])):
-                    sent = all_sentences.iloc[ix][0]
-                    label = all_sentences.iloc[ix][1]
+                    sent = all_sentences.iloc[ix][0].strip()
+                    label = all_sentences.iloc[ix][1].strip()
                     aug_sent = self.magic_once(
                         sent,
                         paraphrase_prefix,
@@ -191,7 +203,6 @@ class TextGenie:
                     )
                     aug_sent = [[s, label] for s in aug_sent]
                     augmented_data.extend(aug_sent)
-
                 augmented_data = pd.DataFrame(
                     data=augmented_data, columns=["Text", "Label"]
                 )
@@ -202,10 +213,8 @@ class TextGenie:
                 )
         elif isinstance(sentences, list):
             all_sentences = sentences
-
         if all_sentences is None:
             raise Exception("Error: No sentences found.")
-
         if not with_labels:
             augmented_data = []
             for sent in tqdm(all_sentences):
@@ -223,6 +232,5 @@ class TextGenie:
             with open(out_file, "w") as f:
                 for line in augmented_data:
                     f.write(line + "\n")
-
         tqdm.write(f"\nCompleted writing output to {out_file}.")
         return augmented_data
