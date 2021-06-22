@@ -33,6 +33,8 @@ textgenie.magic_lamp("sentences.txt","paraphrase: ",n_mask_predictions=5,convert
 # Augment data in a csv file with labels
 textgenie.magic_lamp("sentences.csv","paraphrase: ",n_mask_predictions=5,convert_to_active=True)
 ```
+More examples can be found in the examples [notebook](https://github.com/hetpandya/textgenie/blob/main/examples/examples.ipynb).
+
 ## Usage
 <!--ts-->
 - Initializing the augmentor:
@@ -47,19 +49,70 @@ textgenie.magic_lamp("sentences.csv","paraphrase: ",n_mask_predictions=5,convert
       - Name of the Spacy model. Available models can be found [here](https://spacy.io/models). The default value is set to *en*.
     - *device*:
       - The device where the model will be loaded. The default value is set to *cpu*.
-- Methods:
+- Methods:  
   - augment_sent_mask_filling():
-    - Generate augmented data using BERT mask filling. 
+    - Generate augmented data using BERT mask filling.
+    - Parameters:
+      - *sent*:
+        - The sentence on which augmentation has to be applied.
+      - *n_mask_predictions*:  
+        - The number of topk predictions, the BERT mask filling model should generate. The default value is set to *5*.
   - augment_sent_t5():
     - Generate augmented data using T5 paraphrasing model. 
+    - Parameters:
+      - *sent*:
+        - The sentence on which augmentation has to be applied. 
+      - *prefix*:
+        - The prefix for the T5 model input.
+      - *n_predictions*:
+        - The number of number augmentations, the function should return. The default value is set to *5*.
+      - *top_k=120*:
+        - The number of topk predictions, the T5 model should generate. The default value is set to *120*. 
+      - *max_length*:
+        - The max length of the sentence to feed to the model. The default value is set to *256*. 
   - convert_to_active():
     - Converts a sentence to active voice, if found in passive voice. Otherwise returns the same sentence.
+    - Parameters:
+      - *sent*:
+        - The sentence that has to be converted.
   - magic_once():
-    - This is a wrapper method for *augment_sent_mask_filling()*, *augment_sent_t5()* and *convert_to_active()* methods. Using this, a sentence can be augmented using all the above mentioned techniques.
+    - This is a wrapper method for *augment_sent_mask_filling()*, *augment_sent_t5()* and *convert_to_active()* methods. Using this, a sentence can be augmented using all the above mentioned techniques. 
+    - Parameters:
+      - *sent*:
+        - The sentence that has to be augmented.
+      - *paraphrase_prefix*:
+        - The prefix for the T5 model input.
+      - *n_paraphrase_predictions*:
+        - The number of number augmentations, the function should return. The default value is set to *5*.
+      - *paraphrase_top_k*:
+        - The number of topk predictions, the T5 model should generate. The default value is set to *120*. 
+      - *paraphrase_max_length*:
+        - The max length of the sentence to feed to the model. The default value is set to *256*. 
+      - *n_mask_predictions*:
+        - The number of topk predictions, the BERT mask filling model should generate. The default value is set to *None*.
+      - *convert_to_active*:
+        - If the sentence should be converted to active voice. The default value is set to *True*.
   - magic_lamp():
     - This method can be used for augmenting whole dataset. Currently accepted dataset formats are: `txt`,`csv`,`tsv` and `list`. 
     - If the dataset is in `list` or `txt` format, a list of augmented sentences will be returned. Also, a `txt` file with the name *sentences_aug.txt* is saved containing the output of the augmented data. 
     - If a dataset is in `csv` or `tsv` format with labels, the dataset will be augmented along with keeping in memory the labels for the new samples and a pandas dataframe of the augmented data will be returned. A `csv` file will be generated with the augmented output with name `original_csv_file_name_aug.csv` 
+    - Parameters:
+      - *sentences*:
+        - The dataset that has to be augmented. This can be a `Python List`, a `txt`, `csv` or `tsv` file.
+      - *paraphrase_prefix*:
+        - The prefix for the T5 model input.
+      - *n_paraphrase_predictions*:
+        - The number of number augmentations, the function should return. The default value is set to *5*.
+      - *paraphrase_top_k*:
+        - The number of topk predictions, the T5 model should generate. The default value is set to *120*. 
+      - *paraphrase_max_length*:
+        - The max length of the sentence to feed to the model. The default value is set to *256*. 
+      - *n_mask_predictions*:
+        - The number of topk predictions, the BERT mask filling model should generate. The default value is set to *None*.
+      - *convert_to_active*:
+        - If the sentence should be converted to active voice. The default value is set to *True*.
+      - *column_names*:
+        - If the `csv` or `tsv` does not have column names, a Python list has to be passed to give the columns a name. But, if the dataset already has named columns, then the name of the column that contains the labels has to be passed. Since this function also accepts `Python List` and a `txt` file, the default value is set to *None*. But, if `csv` or `tsv` files are used, this parameter has to be set.
 <!--te-->
 
 ## References
