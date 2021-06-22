@@ -96,7 +96,7 @@ Examples can be found in the examples [notebook](https://github.com/hetpandya/te
   - magic_lamp():
     - This method can be used for augmenting whole dataset. Currently accepted dataset formats are: `txt`,`csv`,`tsv` and `list`. 
     - If the dataset is in `list` or `txt` format, a list of augmented sentences will be returned. Also, a `txt` file with the name *sentences_aug.txt* is saved containing the output of the augmented data. 
-    - If a dataset is in `csv` or `tsv` format with labels, the dataset will be augmented along with keeping in memory the labels for the new samples and a pandas dataframe of the augmented data will be returned. A `csv` file will be generated with the augmented output with name `original_csv_file_name_aug.csv` 
+    - If a dataset is in `csv` or `tsv` format with labels, the dataset will be augmented along with keeping in memory the labels for the new samples and a pandas dataframe of the augmented data will be returned. A `tsv` file will be generated with the augmented output with name `original_file_name_aug.tsv` 
     - Parameters:
       - *sentences*:
         - The dataset that has to be augmented. This can be a `Python List`, a `txt`, `csv` or `tsv` file.
