@@ -114,6 +114,8 @@ Examples can be found in the examples [notebook](https://github.com/hetpandya/te
         - If the sentence should be converted to active voice. The default value is set to *True*.
       - *label_column*:
         - The name of the column that contains labeled data. The default value is set to *None*. This parameter is not required to be set if the dataset is in a `Python List` or a `txt` file.
+      - *data_column*:
+        - The name of the column that contains data. The default value is set to *None*. This parameter too is not required if the dataset is a `Python List` or a `txt` file.
       - *column_names*:
         - If the `csv` or `tsv` does not have column names, a Python list has to be passed to give the columns a name. Since this function also accepts `Python List` and a `txt` file, the default value is set to *None*. But, if `csv` or `tsv` files are used, this parameter has to be set.
 <!--te-->
