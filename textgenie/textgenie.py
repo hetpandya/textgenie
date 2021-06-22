@@ -165,7 +165,7 @@ class TextGenie:
                     )
                 if column_names and not isinstance(column_names, list):
                     raise Exception("Please provide column names in a python list.")
-                out_file = sentences.replace(".csv", "").replace(".tsv", "") + "_aug.csv"
+                out_file = sentences.replace(".csv", "").replace(".tsv", "") + "_aug.tsv"
                 with_labels = True
                 if sentences.endswith(".csv"):
                     if column_names:
