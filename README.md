@@ -77,7 +77,7 @@ Examples can be found in the examples [notebook](https://github.com/hetpandya/te
         - The sentence that has to be converted.
   - magic_once():
     - This is a wrapper method for *augment_sent_mask_filling()*, *augment_sent_t5()* and *convert_to_active()* methods. Using this, a sentence can be augmented using all the above mentioned techniques. 
-    - Since this method can operate on individual text data, it can be used to merged with other packages.
+    - Since this method can operate on individual text data, it can be merged with other packages.
     - Parameters:
       - *sent*:
         - The sentence that has to be augmented.
