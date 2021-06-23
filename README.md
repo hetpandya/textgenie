@@ -66,7 +66,7 @@ Examples can be found in the examples [notebook](https://github.com/hetpandya/te
         - The prefix for the T5 model input.
       - *n_predictions*:
         - The number of number augmentations, the function should return. The default value is set to *5*.
-      - *top_k=120*:
+      - *top_k*:
         - The number of topk predictions, the T5 model should generate. The default value is set to *120*. 
       - *max_length*:
         - The max length of the sentence to feed to the model. The default value is set to *256*. 
