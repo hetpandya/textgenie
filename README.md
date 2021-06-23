@@ -105,11 +105,11 @@ Examples can be found in the examples [notebook](https://github.com/hetpandya/te
       - *n_paraphrase_predictions*:
         - The number of number augmentations, the function should return. The default value is set to *5*.
       - *paraphrase_top_k*:
-        - The number of topk predictions, the T5 model should generate. The default value is set to *120*. 
+        - The number of predictions, the T5 model should generate. The default value is set to *120*. 
       - *paraphrase_max_length*:
         - The max length of the sentence to feed to the model. The default value is set to *256*. 
       - *n_mask_predictions*:
-        - The number of topk predictions, the BERT mask filling model should generate. The default value is set to *None*.
+        - The number of predictions, the BERT mask filling model should generate. The default value is set to *None*.
       - *convert_to_active*:
         - If the sentence should be converted to active voice. The default value is set to *True*.
       - *label_column*:
