@@ -56,7 +56,7 @@ Examples can be found in the examples [notebook](https://github.com/hetpandya/te
       - *sent*:
         - The sentence on which augmentation has to be applied.
       - *n_mask_predictions*:  
-        - The number of topk predictions, the BERT mask filling model should generate. The default value is set to *5*.
+        - The number of predictions, the BERT mask filling model should generate. The default value is set to *5*.
   - augment_sent_t5():
     - Generate augmented data using T5 paraphrasing model. 
     - Parameters:
