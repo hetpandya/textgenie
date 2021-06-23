@@ -21,17 +21,32 @@ pip install textgenie
 ```python
 from textgenie import TextGenie
 
-textgenie = TextGenie("ramsrigouthamg/t5_paraphraser",'bert-base-uncased')
+textgenie = TextGenie("ramsrigouthamg/t5_paraphraser", "bert-base-uncased")
 
 # Augment a list of sentences
-sentences = ["The video was posted on Facebook by Alex.","I plan to run it again this time"]
-textgenie.magic_lamp(sentences,"paraphrase: ",n_mask_predictions=5,convert_to_active=True)
+sentences = [
+    "The video was posted on Facebook by Alex.",
+    "I plan to run it again this time",
+]
+textgenie.magic_lamp(
+    sentences, "paraphrase: ", n_mask_predictions=5, convert_to_active=True
+)
 
 # Augment data in a txt file
-textgenie.magic_lamp("sentences.txt","paraphrase: ",n_mask_predictions=5,convert_to_active=True)
+textgenie.magic_lamp(
+    "sentences.txt", "paraphrase: ", n_mask_predictions=5, convert_to_active=True
+)
 
 # Augment data in a csv file with labels
-textgenie.magic_lamp("sentences.csv","paraphrase: ",n_mask_predictions=5,convert_to_active=True)
+textgenie.textgenie.magic_lamp(
+    "sentences.csv",
+    "paraphrase: ",
+    n_mask_predictions=5,
+    convert_to_active=True,
+    label_column="Label",
+    data_column="Text",
+    column_names=["Text", "Label"],
+)
 ```
 Examples can be found in the examples [notebook](https://github.com/hetpandya/textgenie/blob/main/examples/examples.ipynb).
 
@@ -122,6 +137,9 @@ Examples can be found in the examples [notebook](https://github.com/hetpandya/te
 
 ## References
 [Passive To Active](https://github.com/DanManN/pass2act)
+
+## Links
+Please find an in depth explanation about the library [on my blog](https://het-pandya.medium.com/textgenie-augmenting-your-text-dataset-with-just-2-lines-of-code-71887def0e99).
 
 ## License
 Please check `LICENSE` for more details.
