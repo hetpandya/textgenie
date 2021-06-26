@@ -21,7 +21,7 @@ pip install textgenie
 ```python
 from textgenie import TextGenie
 
-textgenie = TextGenie("ramsrigouthamg/t5_paraphraser", "bert-base-uncased")
+textgenie = TextGenie("hetpandya/t5-small-tapaco", "bert-base-uncased")
 
 # Augment a list of sentences
 sentences = [
