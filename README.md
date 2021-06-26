@@ -139,7 +139,7 @@ Examples can be found in the examples [notebook](https://github.com/hetpandya/te
 [Passive To Active](https://github.com/DanManN/pass2act)
 
 ## Links
-Please find an in depth explanation about the library [on my blog](https://het-pandya.medium.com/textgenie-augmenting-your-text-dataset-with-just-2-lines-of-code-71887def0e99).
+Please find an in depth explanation about the library [on my blog](https://het-pandya.medium.com/textgenie-augmenting-your-text-dataset-with-just-2-lines-of-code-23ce883a0715).
 
 ## License
 Please check `LICENSE` for more details.
