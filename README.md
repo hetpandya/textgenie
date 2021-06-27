@@ -8,7 +8,7 @@
 
 # TextGenie
 
-TextGenie is a python library that helps you augment your text dataset and generate similar kind of samples, thus generating a more robust dataset to train better models. It also takes care of labeled datasets while generating similar samples keeping their labels in memory. 
+TextGenie is a text data augmentations library that helps you augment your text dataset and generate similar kind of samples, thus generating a more robust dataset to train better models. It also takes care of labeled datasets while generating similar samples keeping their labels in memory. 
 
 It uses various Natural Language Processing methods such as paraphrase generation, BERT mask filling and converting text to active voice if found in passive voices. This library currently supports `English` Language.
 
