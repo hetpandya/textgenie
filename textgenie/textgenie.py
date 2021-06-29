@@ -60,7 +60,7 @@ class TextGenie:
         keywords = self.extract_keywords(sent)
         augmented_sents = []
         for keyword in keywords:
-            masked_sent = sent.replace(keyword, "[MASK]", 1)
+            masked_sent = sent.replace(keyword, self.mask_augmenter.tokenizer.mask_token, 1)
             augmented_sents.extend(
                 [
                     generated_sent["sequence"]
