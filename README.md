@@ -54,11 +54,11 @@ Examples can be found in the examples [notebook](https://github.com/hetpandya/te
 ## Usage
 <!--ts-->
 - Initializing the augmentor:
-
   ```textgenie = TextGenie(paraphrase_model_name='model_name',mask_model_name='model_name',spacy_model_name="model_name",device="cpu")```
   - Parameters:
     - *paraphrase_model_name*: 
       - The name of the T5 paraphrase model.
+      - A list of pretrained model for paraphrase generation can be found [here](https://github.com/hetpandya/paraphrase-datasets-pretrained-models#pretrained-models)
     - *mask_model_name*:
       - BERT model that will be used to fill masks. This model is disabled by default. But can be enabled by mentioning the name of the BERT model to be used. A list of mask filling models can be found [here](https://huggingface.co/models?filter=en&pipeline_tag=fill-mask)
     - *spacy_model_name*:
