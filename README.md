@@ -39,7 +39,7 @@ textgenie.magic_lamp(
 )
 
 # Augment data in a csv file with labels
-textgenie.textgenie.magic_lamp(
+textgenie.magic_lamp(
     "sentences.csv",
     "paraphrase: ",
     n_mask_predictions=5,
