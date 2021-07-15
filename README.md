@@ -1,7 +1,9 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://en.wikipedia.org/wiki/MIT_License)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Downloads](https://static.pepy.tech/badge/textgenie)](https://pepy.tech/project/textgenie)
+<a href="https://pepy.tech/project/textgenie">
+    <img alt="Downloads" src="https://pepy.tech/badge/textgenie">
+</a>
 
 <p align="center">
   <img src="https://github.com/hetpandya/textgenie/raw/main/logo.png" alt="logo" width="70%" />
