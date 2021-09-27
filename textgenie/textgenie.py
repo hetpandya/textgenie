@@ -19,7 +19,7 @@ class TextGenie:
         self,
         paraphrase_model_name,
         mask_model_name=None,
-        spacy_model_name="en",
+        spacy_model_name="en_core_web_sm",
         device="cpu",
     ):
         tqdm.write("Loading Paraphrase Model..")
