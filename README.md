@@ -64,7 +64,7 @@ Examples can be found in the examples [notebook](https://github.com/hetpandya/te
     - *mask_model_name*:
       - BERT model that will be used to fill masks. This model is disabled by default. But can be enabled by mentioning the name of the BERT model to be used. A list of mask filling models can be found [here](https://huggingface.co/models?filter=en&pipeline_tag=fill-mask)
     - *spacy_model_name*:
-      - Name of the Spacy model. Available models can be found [here](https://spacy.io/models). The default value is set to *en*.
+      - Name of the Spacy model. Available models can be found [here](https://spacy.io/models). The default value is set to *en_core_web_sm*.
     - *device*:
       - The device where the model will be loaded. The default value is set to *cpu*.
 - Methods:  
