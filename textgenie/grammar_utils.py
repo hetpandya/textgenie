@@ -15,7 +15,7 @@ noundict = {
     "us": "we",
     "me": "i",
 }
-nlp = spacy.load("en")
+nlp = spacy.load("en_core_web_sm")
 matcher = Matcher(nlp.vocab)
 
 
