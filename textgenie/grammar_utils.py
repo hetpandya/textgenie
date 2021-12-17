@@ -1,6 +1,7 @@
 import spacy
 import pattern.en as en
 from spacy.matcher import Matcher
+from pattern.en import lexeme
 
 noundict = {
     "i": "me",
@@ -18,14 +19,20 @@ noundict = {
 nlp = spacy.load("en_core_web_sm")
 matcher = Matcher(nlp.vocab)
 
-
 def nouninv(noun):
     n = noun.lower()
     if n in noundict:
         return noundict[n]
     return noun
 
+def pattern_stopiteration_workaround():
+    try:
+        print(lexeme('check'))
+    except:
+        pass
 
+pattern_stopiteration_workaround()    
+    
 def pass2act(doc, rec=False):
     """
     Author : Daniel Nohimovich & Zhekai Jin (Scott)
