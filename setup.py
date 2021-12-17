@@ -1,11 +1,12 @@
 from setuptools import setup
+from textgenie import __version__ as version
 
 with open("README.md", "r") as f:
     long_description = f.read()
 
 setup(
     name="textgenie",
-    version="0.1.9.5",
+    version=version,
     description="A python library to augment text data using NLP.",
     long_description=long_description,
     long_description_content_type="text/markdown",
