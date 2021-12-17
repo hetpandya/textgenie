@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="textgenie",
-    version="0.1.9.3",
+    version="0.1.9.4",
     description="A python library to augment text data using NLP.",
     long_description=long_description,
     long_description_content_type="text/markdown",
