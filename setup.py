@@ -17,9 +17,9 @@ setup(
         "torch>=1.5.0",
         "transformers",
         "sentencepiece",
-        "spacy",
+        "spacy==2.2.4",
         "tqdm",
-        "pattern",
+        "pattern==3.6",
     ],
     packages=["textgenie"],
 )
