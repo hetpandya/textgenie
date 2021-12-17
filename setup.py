@@ -1,12 +1,20 @@
 from setuptools import setup
-from textgenie import __version__ as version
+import re
+
+def get_property(prop, project):
+    """
+    Credits: https://stackoverflow.com/a/41110107
+    """
+    result = re.search(r'{}\s*=\s*[\'"]([^\'"]*)[\'"]'.format(prop), open(project + '/__init__.py').read())
+    return result.group(1)
+
 
 with open("README.md", "r") as f:
     long_description = f.read()
 
 setup(
     name="textgenie",
-    version=version,
+    version=get_property('__version__', "textgenie"),
     description="A python library to augment text data using NLP.",
     long_description=long_description,
     long_description_content_type="text/markdown",
