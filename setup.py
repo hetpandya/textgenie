@@ -24,3 +24,4 @@ setup(
     ],
     packages=["textgenie"],
 )
+
