@@ -39,6 +39,9 @@ def pass2act(doc, rec=False):
     Course : ECE 467 Natural Language Processing
     Instructor : Professor Carl Sable
     https://github.com/DanManN/pass2act
+    All rights reserved by the orignal author.
+    This source code is licensed under the Apache License 2.0 found in the
+    LICENSE file in the root directory of this source tree.
     """
     parse = nlp(doc)
     newdoc = ""
