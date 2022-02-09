@@ -139,7 +139,7 @@ Examples can be found in the examples [notebook](https://github.com/hetpandya/te
 <!--te-->
 
 ## References
-[Passive To Active](https://github.com/DanManN/pass2act)
+[Passive To Active](https://github.com/DanManN/pass2act) licensed under the Apache License 2.0
 
 ## Links
 Please find an in depth explanation about the library [on my blog](https://towardsdatascience.com/textgenie-augmenting-your-text-dataset-with-just-2-lines-of-code-23ce883a0715).
