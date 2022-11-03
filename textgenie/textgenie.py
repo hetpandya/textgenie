@@ -30,14 +30,15 @@ class TextGenie:
         self.paraphrase_model = self.paraphrase_model.to(device)
         self.device = device
 
+        import spacy
+        self.nlp = spacy.load(spacy_model_name)
+
         if mask_model_name:
             tqdm.write("Loading Mask Fill Model..")
             from transformers import pipeline
             from string import punctuation
-            import spacy
 
             self.mask_augmenter = pipeline("fill-mask", model=mask_model_name)
-            self.nlp = spacy.load(spacy_model_name)
 
     def extract_keywords(self, sentence):
         result = []
@@ -72,8 +73,8 @@ class TextGenie:
             )
         return augmented_sents
 
-    def augment_sent_t5(self, sent, prefix, n_predictions=5, top_k=120, max_length=256):
-        text = prefix + sent + " </s>"
+    def augment_sent_t5(self, sent, prefix, n_predictions=5, top_k=120, max_length=256, add_suffix_token=True):
+        text = prefix + sent + " </s>" if add_suffix_token else ""
         encoding = self.paraphrase_tokenizer.encode_plus(
             text, pad_to_max_length=True, return_tensors="pt"
         )
@@ -105,8 +106,8 @@ class TextGenie:
         return final_outputs
 
     def convert_to_active(self, sent):
-        if is_passive(sent):
-            return pass2act(sent)
+        if is_passive(sent, nlp=self.nlp):
+            return pass2act(sent, nlp=self.nlp)
         else:
             return sent
 
@@ -119,6 +120,7 @@ class TextGenie:
         paraphrase_max_length=256,
         n_mask_predictions=None,
         convert_to_active=True,
+        add_suffix_token=True,
     ):
         sent = sent.strip()
         output = []
@@ -150,6 +152,7 @@ class TextGenie:
         label_column=None,
         data_column=None,
         column_names=None,
+        add_suffix_token=True,
     ):
         all_sentences = None
         with_labels = False
@@ -211,6 +214,7 @@ class TextGenie:
                         paraphrase_max_length,
                         n_mask_predictions,
                         convert_to_active,
+                        add_suffix_token,
                     )
                     aug_sent = [[s, label] for s in aug_sent]
                     augmented_data.extend(aug_sent)
@@ -238,6 +242,7 @@ class TextGenie:
                         paraphrase_max_length,
                         n_mask_predictions,
                         convert_to_active,
+                        add_suffix_token,
                     )
                 )
             with open(out_file, "w") as f:

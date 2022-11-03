@@ -16,8 +16,6 @@ noundict = {
     "us": "we",
     "me": "i",
 }
-nlp = spacy.load("en_core_web_sm")
-matcher = Matcher(nlp.vocab)
 
 def nouninv(noun):
     n = noun.lower()
@@ -33,7 +31,7 @@ def pattern_stopiteration_workaround():
 
 pattern_stopiteration_workaround()    
     
-def pass2act(doc, rec=False):
+def pass2act(doc, nlp, rec=False):
     """
     Author : Daniel Nohimovich & Zhekai Jin (Scott)
     Course : ECE 467 Natural Language Processing
@@ -279,7 +277,7 @@ def pass2act(doc, rec=False):
     return newdoc
 
 
-def is_passive(sentence):
+def is_passive(sentence, nlp):
     doc = nlp(sentence)
     passive_rule = [
         {"DEP": "nsubjpass"},
@@ -287,7 +285,10 @@ def is_passive(sentence):
         {"DEP": "auxpass"},
         {"TAG": "VBN"},
     ]
-    matcher.add("Passive", None, passive_rule)
+
+    matcher = Matcher(nlp.vocab)
+
+    matcher.add("Passive", [passive_rule])
     matches = matcher(doc)
     if matches:
         return True
