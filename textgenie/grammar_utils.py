@@ -1,7 +1,15 @@
 import spacy
-import pattern.en as en
 from spacy.matcher import Matcher
-from pattern.en import lexeme
+
+try:
+    import pattern.en as en
+    from pattern.en import lexeme
+except LookupError:
+    import nltk
+
+    nltk.download("omw-1.4")
+    import pattern.en as en
+    from pattern.en import lexeme
 
 noundict = {
     "i": "me",
@@ -17,20 +25,24 @@ noundict = {
     "me": "i",
 }
 
+
 def nouninv(noun):
     n = noun.lower()
     if n in noundict:
         return noundict[n]
     return noun
 
+
 def pattern_stopiteration_workaround():
     try:
-        print(lexeme('check'))
+        print(lexeme("check"))
     except:
         pass
 
-pattern_stopiteration_workaround()    
-    
+
+pattern_stopiteration_workaround()
+
+
 def pass2act(doc, nlp, rec=False):
     """
     Author : Daniel Nohimovich & Zhekai Jin (Scott)
