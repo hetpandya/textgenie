@@ -170,7 +170,7 @@ def pass2act(doc, nlp, rec=False):
                         for w in word.subtree
                     ).strip()
                     that = xcomp.startswith("that")
-                    xcomp = pass2act(xcomp, True).strip(" .")
+                    xcomp = pass2act(xcomp, nlp, True).strip(" .")
                     if not xcomp.startswith("that") and that:
                         xcomp = "that " + xcomp
             if word.dep_ == "punct" and not rec:
