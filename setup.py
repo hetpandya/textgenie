@@ -29,7 +29,7 @@ setup(
         "spacy",
         "tqdm",
         "pandas",
-        "pattern==3.6",
+        "Pattern @ git+https://github.com/clips/pattern.git",
     ],
     packages=["textgenie"],
 )
